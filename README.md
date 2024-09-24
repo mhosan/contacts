@@ -24,5 +24,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 ## Notas
 
+    - **Usar SASS** (mejor organización del código):  
+        - *Variables*: $redondeo = 5px; $colorPrimario = #ff00ff;
+        - *Mixins*, reutilizar código: @mixin bordeRedondo { border-radius: $redondeo }
+            - para usar el mixins: @include en la clase, por ej. @include bordeRedondo 
+        - *Funciones*: @function colorFondo($colorPrimario){
+                @return {
+                    background-color: $colorPrimario;
+                }
+            }
+        - *Importar archivos*: @import 'variables'
+        - *Herencia*
+        - *Nesting*
 Generar archivos de environments: `ng g environments`
 
