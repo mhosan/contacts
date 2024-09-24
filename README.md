@@ -6,10 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
@@ -36,7 +32,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
     - **Importar archivos**: @import 'variables'
     - **Herencia**
     - **Nesting**
-- **Bootstrap** Se combinan SASS y Bootstrap.
 - **Alias** en el archivo tsconfig.json:
     ```{
         "compileOnSave": false,
@@ -48,6 +43,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
             "@envs/*" : ["src/environments/*"],
             "@components/*" : ["src/app/components/*"]
     },
--   **Angular material**
+-   **Angular material**: Instalar con `ng add @angular/material`, es un schematics.
 -   **environments** Generar archivos de environments: `ng g environments`
--   **Firebase**: Tener una cuenta en Firebase. Instalar las tools de Firebase con `npm i -g firebase-tools`
+-   **Firebase**: Tener una cuenta en Firebase. Instalar las tools de Firebase con `npm i -g firebase-tools`. Probar si se está logeado con `firebase login`
