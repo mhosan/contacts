@@ -36,8 +36,18 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
     - **Importar archivos**: @import 'variables'
     - **Herencia**
     - **Nesting**
-- **Bootstrap**
-- **Alias**
+- **Bootstrap** Se combinan SASS y Bootstrap.
+- **Alias** en el archivo tsconfig.json:
+    ```{
+        "compileOnSave": false,
+        "compilerOptions": {
+            "baseUrl":"./",
+            "paths": {
+            "@shared/*" : ["src/app/shared/*"],
+            "@features/*" : ["src/app/features/*"],
+            "@envs/*" : ["src/environments/*"],
+            "@components/*" : ["src/app/components/*"]
+    },
 
 Generar archivos de environments: `ng g environments`
 
