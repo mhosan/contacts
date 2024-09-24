@@ -48,6 +48,5 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
             "@envs/*" : ["src/environments/*"],
             "@components/*" : ["src/app/components/*"]
     },
-
-Generar archivos de environments: `ng g environments`
+-   **environments** Generar archivos de environments: `ng g environments`
 
