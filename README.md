@@ -46,3 +46,4 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 -   **Angular material**: Instalar con `ng add @angular/material`, es un schematics.
 -   **environments** Generar archivos de environments: `ng g environments`
 -   **Firebase**: Tener una cuenta en Firebase. Instalar las tools de Firebase con `npm i -g firebase-tools`. Probar si se está logeado con `firebase login`
+-   **Angular fire**: Para manejar mejor Firebase, instalar el schematics fire con: `ng add @angular/fire`. Seleccionar las funcionalidades que se quieren manejar, el proyecto nuevo o alguno existente (para este caso muestra una lista). Finalmente colocar el provider firebase que quedará en el archivo app.config.ts en una variable en environments.
