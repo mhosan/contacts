@@ -48,5 +48,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
             "@envs/*" : ["src/environments/*"],
             "@components/*" : ["src/app/components/*"]
     },
+-   **Angular material**
 -   **environments** Generar archivos de environments: `ng g environments`
-
+-   **Firebase**: Tener una cuenta en Firebase. Instalar las tools de Firebase con `npm i -g firebase-tools`
