@@ -15,5 +15,7 @@ const MATERIAL_MODULES =[MatCardModule]
 export class AppComponent {
   title = 'contact';
 
-  onClickNewContact():void{}
+  onClickNewContact():void{
+    console.log("nuevo contacto");
+  }
 }
