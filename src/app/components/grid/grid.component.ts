@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 
 export interface PeriodicElement {
   name: string;
@@ -34,7 +36,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-grid',
   standalone: true,
-  imports: [],
+  imports: [MatTableModule, MatPaginatorModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss'
 })
