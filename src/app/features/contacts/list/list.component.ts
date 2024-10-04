@@ -37,6 +37,6 @@ const ELEMENT_DATA: any[] = [
   styles: ``
 })
 export class ListComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  data = ELEMENT_DATA;
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];    //enviar las columnas al componente tabla
+  data = ELEMENT_DATA;                                                      //enviar la data al componente tabla
 }
