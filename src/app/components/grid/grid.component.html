@@ -1,4 +1,11 @@
-<div class="mat-elevation-z8">
+<section>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input type="text" (keyup)="applyFilter($event)" placeholder="Filtración...">
+  </mat-form-field>
+
+
+  <div class="mat-elevation-z8">
     <table mat-table matSort [dataSource]="dataSource">
   
       @for (column of displayedColumns(); track $index) {
@@ -14,7 +21,8 @@
   
     <mat-paginator [pageSizeOptions]="[5, 10, 20]"
                    showFirstLastButtons
-                   aria-label="Select page of periodic elements">
+                   >
     </mat-paginator> 
   </div>
+</section>
   

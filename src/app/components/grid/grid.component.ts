@@ -1,4 +1,5 @@
 import { Component, input, OnInit, viewChild } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -8,7 +9,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 @Component({
   selector: 'app-grid',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatPaginatorModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatPaginatorModule, MatFormFieldModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss'
 })
@@ -27,6 +28,12 @@ export class GridComponent<T> implements OnInit {
     this.dataSource.data = this.data();
     this.dataSource.sort = this._sort();
     this.dataSource.paginator= this._paginator();
+  }
+
+  applyFilter(event:Event):void{
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase()
+
   }
 
 }
