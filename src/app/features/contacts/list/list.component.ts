@@ -31,12 +31,13 @@ const ELEMENT_DATA: any[] = [
   imports: [GridComponent],
   template: `
       <section>
-        <app-grid [displayedColumns]="displayedColumns" [data]="data" />
+        <app-grid [displayedColumns]="displayedColumns" [data]="data" [sortableColumns]="sortables"/>
       </section>
   `,
   styles: ``
 })
 export class ListComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];    //enviar las columnas al componente tabla
-  data = ELEMENT_DATA;                                                      //enviar la data al componente tabla
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'action'];    //enviar las columnas al componente tabla
+  data = ELEMENT_DATA; 
+  sortables:any = ['position', 'name', 'weight', 'symbol'];                                                               //enviar la data al componente tabla
 }
