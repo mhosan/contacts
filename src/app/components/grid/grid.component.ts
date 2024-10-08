@@ -1,15 +1,15 @@
-import { Component, input, OnInit, viewChild } from '@angular/core';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { Component, input, OnInit, signal, viewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatInput } from '@angular/material/input';
+import { FilterComponent } from './filter/filter.component';
+
 
 
 @Component({
   selector: 'app-grid',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatPaginatorModule, MatFormField, MatLabel, MatInput],
+  imports: [FilterComponent, MatTableModule, MatPaginatorModule, MatSortModule, MatPaginatorModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss'
 })
@@ -21,6 +21,7 @@ export class GridComponent<T> implements OnInit {
   displayedColumns = input.required<string[]>();  //recibo las columnas desde fuera
   data = input.required<T[]>()                    //recibo la data desde fuera
   dataSource = new MatTableDataSource<T>();
+  valueToFilter = signal('');
   private readonly _sort = viewChild.required<MatSort>(MatSort);
   private readonly _paginator = viewChild.required<MatPaginator>(MatPaginator);
 
