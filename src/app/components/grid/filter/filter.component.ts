@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   template: `
     <mat-form-field>
     <mat-label>{{label()}}</mat-label>
-    <input matInput type="text" [(ngModel)]="filter" [placeholder]!="placeholder()">
+    <input matInput type="text" [(ngModel)]="filter" [placeholder]="placeholder()">
   </mat-form-field>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush
