@@ -1,15 +1,15 @@
 import { Component, input, OnInit, viewChild } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-
+import { MatInput } from '@angular/material/input';
 
 
 @Component({
   selector: 'app-grid',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatPaginatorModule, MatFormFieldModule],
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatPaginatorModule, MatFormField, MatLabel, MatInput],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss'
 })
