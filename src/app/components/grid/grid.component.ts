@@ -1,10 +1,14 @@
-import { Component, effect, input, OnInit, signal, viewChild } from '@angular/core';
+import { Component, effect, inject, input, OnInit, signal, viewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FilterComponent } from './filter/filter.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { APP_CONSTANTS } from '@shared/constants';
+import { ContactService } from '@features/contacts/contact.service';
+import { ModalService } from '@components/modal/modal.service';
+import { ModalComponent } from '@components/modal/modal.component';
 
 
 @Component({
@@ -22,6 +26,9 @@ export class GridComponent<T> implements OnInit {
   valueToFilter = signal('');
   private readonly _sort = viewChild.required<MatSort>(MatSort);
   private readonly _paginator = viewChild.required<MatPaginator>(MatPaginator);
+  private readonly _contactSvc = inject(ContactService);
+  private readonly _modalSvc = inject(ModalService);
+
   constructor() {
     effect(()=>{
       if(this.valueToFilter()){
@@ -35,6 +42,18 @@ export class GridComponent<T> implements OnInit {
     this.dataSource.data = this.data();
     this.dataSource.sort = this._sort();
     this.dataSource.paginator = this._paginator();
+  }
+
+  openEditForm(data: T):void {
+    this._modalSvc.openModal<ModalComponent, T>(ModalComponent, data);
+  }
+
+  deleteContact(id: string): void{
+    const confirmation = APP_CONSTANTS.MESSAGES.CONFIRMATION_PROMPT;
+    if(confirmation){
+      this._contactSvc.deleteContact(id);
+      //snackbar con el msg que se borró el elemento
+    }
   }
 
 }

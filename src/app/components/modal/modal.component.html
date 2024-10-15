@@ -3,10 +3,10 @@
         Contact form
     </h1>
 </div>
-<form [formGroup]="contactForm">
+<form [formGroup]="contactForm" (onSubmit)="onSubmit()">
     <div mat-dialog-content class="content">
         <div class="row">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field  appearance="outline">
                 <mat-label>
                     Name
                 </mat-label>
@@ -14,7 +14,7 @@
             </mat-form-field>
         </div>
         <div class="row">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field  appearance="outline">
                 <mat-label>
                     Email
                 </mat-label>
@@ -22,7 +22,7 @@
             </mat-form-field>
         </div>
         <div class="row">
-            <mat-form-field class="full-width" appearance="outline">
+            <mat-form-field  appearance="outline">
                 <mat-label>
                     Phone
                 </mat-label>
@@ -31,7 +31,7 @@
         </div>
         <div mat-dialog-actions class="action">
             <button mat-raised-button [mat-dialog-close]="false" type="button">Cancel</button>
-            <button [disabled]="!contactForm.valid" mat-raised-button color="primary" type="button">{{getTitle()}}</button>
+            <button [disabled]="!contactForm.valid" mat-raised-button color="primary" type="submit">{{getTitle()}}</button>
         </div>
     </div>
 
