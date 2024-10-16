@@ -3,7 +3,7 @@
         Contact form
     </h1>
 </div>
-<form [formGroup]="contactForm" (onSubmit)="onSubmit()">
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
     <div mat-dialog-content class="content">
         <div class="row">
             <mat-form-field  appearance="outline">
