@@ -24,7 +24,7 @@ Run `ng build --configuration=production`
     - **Importar archivos**: @import 'variables'
     - **Herencia**
     - **Nesting**
-- **Alias** en el archivo tsconfig.json:
+- **Alias** en el archivo **tsconfig.json**:
     ```{
         "compileOnSave": false,
         "compilerOptions": {
