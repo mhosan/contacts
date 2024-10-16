@@ -9,6 +9,7 @@ import { APP_CONSTANTS } from '@shared/constants';
 import { ContactService } from '@features/contacts/contact.service';
 import { ModalService } from '@components/modal/modal.service';
 import { ModalComponent } from '@components/modal/modal.component';
+import { SnackBarService } from '@shared/services/snack-bar.service';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class GridComponent<T> implements OnInit {
   private readonly _paginator = viewChild.required<MatPaginator>(MatPaginator);
   private readonly _contactSvc = inject(ContactService);
   private readonly _modalSvc = inject(ModalService);
+  private readonly _snackBar = inject(SnackBarService);
 
   constructor() {
     effect(()=>{
@@ -35,6 +37,10 @@ export class GridComponent<T> implements OnInit {
         this.dataSource.filter = this.valueToFilter();
       } else {
         this.dataSource.filter = '';
+      }
+
+      if(this.data()){
+        this.dataSource.data = this.data();
       }
     }, {allowSignalWrites: true});//allowSignalWrites: true permite modificar la signal dentro del effect, cosa que no está permitida por default.
   }
@@ -45,14 +51,18 @@ export class GridComponent<T> implements OnInit {
   }
 
   openEditForm(data: T):void {
-    this._modalSvc.openModal<ModalComponent, T>(ModalComponent, data);
+    this._modalSvc.openModal<ModalComponent, T>(ModalComponent, data, true);
+  }
+
+  selectRow(data: T): void{
+    this.openEditForm(data);
   }
 
   deleteContact(id: string): void{
     const confirmation = APP_CONSTANTS.MESSAGES.CONFIRMATION_PROMPT;
     if(confirmation){
       this._contactSvc.deleteContact(id);
-      //snackbar con el msg que se borró el elemento
+      this._snackBar.showSnackBar(APP_CONSTANTS.MESSAGES.CONTACT_DELETED);
     }
   }
 
