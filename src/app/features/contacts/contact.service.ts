@@ -4,12 +4,12 @@ import { APP_CONSTANTS } from '@shared/constants';
 import { Contact } from './contact.interfaces';
 import { Observable } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ContactService {
     private readonly _firestore = inject(Firestore);
     private readonly _contactCollection = collection(this._firestore, APP_CONSTANTS.COLLECTION_NAME);
 
-    newContact(contact:Partial<Contact>):Promise<DocumentReference<DocumentData, DocumentData>> {
+    newContact(contact: Partial<Contact>): Promise<DocumentReference<DocumentData, DocumentData>> {
         return addDoc(this._contactCollection, {
             created: Date.now(),
             updated: Date.now(),
@@ -17,30 +17,28 @@ export class ContactService {
         })
     }
 
-    getAllContacts(): Observable<Contact[]>{
+    getAllContacts(): Observable<Contact[]> {
         const queryFn = query(this._contactCollection, orderBy('created', 'desc'));
-        return collectionData(queryFn, {idField: 'id'}) as Observable<Contact[]>;
+        return collectionData(queryFn, { idField: 'id' }) as Observable<Contact[]>;
     }
 
-    async getContactById(id: string): Promise<Contact>{
+    async getContactById(id: string): Promise<Contact> {
         const docRef = this._getDocRef(id);
-        const documentData= await getDoc(docRef);
+        const documentData = await getDoc(docRef);
         return documentData.data() as Contact;
     }
 
-    updateContact(id: string, contact: Contact): void{
+    updateContact(id: string, contact: Contact): void {
         const docRef = this._getDocRef(id);
-        updateDoc(docRef, {...contact});
+        updateDoc(docRef, { ...contact });
     }
 
-    deleteContact(id: string):void {
+    deleteContact(id: string): void {
         const docRef = this._getDocRef(id);
         deleteDoc(docRef);
     }
 
-
-
-    private _getDocRef(id: string){
+    private _getDocRef(id: string) {
         return doc(this._firestore, APP_CONSTANTS.COLLECTION_NAME, id);
     }
 

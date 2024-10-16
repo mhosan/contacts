@@ -19,6 +19,7 @@ export class AppComponent {
   title = 'contact';
 
   private readonly _modalSvc = inject(ModalService);
+  
   onClickNewContact():void{
     this._modalSvc.openModal<ModalComponent>(ModalComponent);
   }
