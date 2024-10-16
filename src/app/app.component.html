@@ -1,15 +1,23 @@
 <section>
     <mat-card>
         <mat-card-content>
+            <!-- @defer permite definir un bloque que se cargará en forma diferida cuando se cumpla
+            una condición. Puede ser un componente, una directiva, pipes y css asociados. Ojo que
+            funciona con componentes standalone solamente!-->
             @defer(){
             <app-toolbar (onNewContactEvent)="onClickNewContact()" />
             <router-outlet />
             }
-            @loading( minimum 1s) {
+            <!-- cuando está presente @loading, se cargará primero. -->
+            @loading( minimum 0.5s) {
             <div class="spinner-container">
                 <mat-spinner mode="indeterminate"></mat-spinner>
             </div>
             }
+            <!-- @placeholder (minimum 3s) {
+                <p>Esto es un placeholder!</p>
+            } -->
+                
         </mat-card-content>
     </mat-card>
 </section>
