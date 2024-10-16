@@ -32,17 +32,19 @@ export class GridComponent<T> implements OnInit {
   private readonly _snackBar = inject(SnackBarService);
 
   constructor() {
-    effect(()=>{
-      if(this.valueToFilter()){
+    /**effect() es un signal que reacciona a los cambios de otro signal. En este caso está reaccionando 
+     * a los cambios de "valueToFilter()" */
+    effect(() => {
+      if (this.valueToFilter()) {
         this.dataSource.filter = this.valueToFilter();
       } else {
         this.dataSource.filter = '';
       }
-
-      if(this.data()){
+      /** también se controlan los cambios en data() */
+      if (this.data()) {
         this.dataSource.data = this.data();
       }
-    }, {allowSignalWrites: true});//allowSignalWrites: true permite modificar la signal dentro del effect, cosa que no está permitida por default.
+    }, { allowSignalWrites: true });//allowSignalWrites: true permite modificar la signal dentro del effect, cosa que no estaria permitida por default.
   }
   ngOnInit(): void {
     this.dataSource.data = this.data();
@@ -50,17 +52,17 @@ export class GridComponent<T> implements OnInit {
     this.dataSource.paginator = this._paginator();
   }
 
-  openEditForm(data: T):void {
+  openEditForm(data: T): void {
     this._modalSvc.openModal<ModalComponent, T>(ModalComponent, data, true);
   }
 
-  selectRow(data: T): void{
+  selectRow(data: T): void {
     this.openEditForm(data);
   }
 
-  deleteContact(id: string): void{
+  deleteContact(id: string): void {
     const confirmation = APP_CONSTANTS.MESSAGES.CONFIRMATION_PROMPT;
-    if(confirmation){
+    if (confirmation) {
       this._contactSvc.deleteContact(id);
       this._snackBar.showSnackBar(APP_CONSTANTS.MESSAGES.CONTACT_DELETED);
     }
