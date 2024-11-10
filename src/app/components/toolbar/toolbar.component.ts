@@ -13,7 +13,7 @@ const MATERIAL_MODULES = [MatToolbarModule, MatIconModule, MatButtonModule]
     <mat-toolbar color="primary">
       <a mat-button routerLink="/">
         <mat-icon>home</mat-icon>
-        <span>home</span>
+        <span>Home</span>
       </a>
 
       <a mat-button routerLink="/contacts">
